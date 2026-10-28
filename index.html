@@ -7,8 +7,8 @@
   <meta name="color-scheme" content="light dark">
   <title>蝴蝶谱 · 磁通扫描演示</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261028">
+  <script src="app.js?v=20261028" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#content">跳到正文</a>
@@ -21,7 +21,7 @@
       <button type="submit">搜索</button>
       <div class="search-results" id="search-results" role="status" hidden></div>
     </form>
-    <nav class="header-links" aria-label="页面工具"><a href="assets/butterfly-spectrum.mp4" download>下载视频</a><a href="#about">关于本页</a></nav>
+    <nav class="header-links" aria-label="页面工具"><a class="current-video-download" href="assets/butterfly-order-1-20261028.mp4" download>下载当前视频</a><a href="#about">关于本页</a></nav>
     <button class="icon-button appearance-toggle" id="appearance-toggle" aria-controls="appearance" aria-expanded="false" aria-label="外观设置">Aa</button>
   </header>
 
@@ -45,52 +45,61 @@
       <p class="subtitle">霍夫施塔特蝴蝶谱的磁通扫描、动量分支与能隙</p>
       <div class="article-tabs"><nav aria-label="内容视图"><a href="#top" class="selected">条目</a><a href="#demonstration">视频演示</a></nav><a href="#provenance">版本信息</a></div>
 
-      <p class="lead"><strong>霍夫施塔特蝴蝶谱</strong>展示方格晶格中电子的允许能量如何随磁通变化。本页将这一谱结构与动量分辨的能量分支并置，以一段连续的<strong>参数扫描动画</strong>呈现它们之间的对应关系。</p>
-      <p class="intro-note">选择下方关键磁通，可以直接观看对应画面。视频中的播放时间仅用于浏览，不代表电子的真实演化时间。</p>
+      <p class="lead"><strong>霍夫施塔特蝴蝶谱</strong>展示方格晶格中电子的允许能量如何随磁通变化。本页将这一谱结构与动量分辨的能量分支并置，以三段可切换的<strong>参数扫描动画</strong>呈现 |m| = 1、2、3 的能隙。</p>
+      <p class="intro-note">选择能隙阶数，或点击下方关键磁通。切换阶数会保留播放位置，便于比较同一磁通。视频中的播放时间仅用于浏览，不代表电子的真实演化时间。</p>
 
       <section id="demonstration" data-search="动画 演示 视频 播放 磁通 扫描" aria-labelledby="demonstration-heading">
         <h2 id="demonstration-heading" tabindex="-1">动画演示</h2>
+        <div class="order-switcher" role="group" aria-label="选择能隙阶数">
+          <span class="order-label">能隙阶数</span>
+          <button type="button" data-order="1" data-video="assets/butterfly-order-1-20261028.mp4" data-poster="assets/butterfly-order-1-20261028.png" aria-pressed="true">|m| = 1</button>
+          <button type="button" data-order="2" data-video="assets/butterfly-order-2-20261028.mp4" data-poster="assets/butterfly-order-2-20261028.png" aria-pressed="false">|m| = 2</button>
+          <button type="button" data-order="3" data-video="assets/butterfly-order-3-20261028.mp4" data-poster="assets/butterfly-order-3-20261028.png" aria-pressed="false">|m| = 3</button>
+          <span id="order-description">展示 m = −1 与 +1</span>
+        </div>
         <figure class="video-figure">
-          <video id="butterfly-video" controls playsinline preload="metadata" poster="assets/butterfly-half-flux.png" aria-describedby="video-caption">
-            <source src="assets/butterfly-spectrum.mp4" type="video/mp4">
+          <video id="butterfly-video" controls playsinline preload="metadata" poster="assets/butterfly-order-1-20261028.png" aria-describedby="video-caption">
+            <source src="assets/butterfly-order-1-20261028.mp4" type="video/mp4">
             你的浏览器无法播放嵌入视频，可使用下方链接下载 MP4。
           </video>
-          <figcaption id="video-caption"><strong>图 1　方格模型的蝴蝶谱扫描。</strong>左侧显示磁通与能量，右侧显示同一磁通下的动量分支。海报画面为半磁通处的中央闭隙。</figcaption>
+          <figcaption id="video-caption"><strong>图 1　方格模型的蝴蝶谱扫描。</strong>左侧以完整蝴蝶谱为固定底图，右侧显示当前磁通下的动量分支。两幅绘图区均为正方形；黑色虚线标示当前磁通与布拉格参考位置。手机可横屏或全屏观看。</figcaption>
         </figure>
         <div class="player-toolbar">
           <button id="play-toggle" class="wiki-button" type="button">播放演示</button>
           <label class="rate-label">播放速度 <select id="playback-rate" aria-label="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
-          <a class="download-link" href="assets/butterfly-spectrum.mp4" download>下载原始 MP4 <span>（约 49.2 MiB）</span></a>
+          <a class="download-link current-video-download" href="assets/butterfly-order-1-20261028.mp4" download>下载当前 MP4 <span id="download-order">（|m| = 1）</span></a>
         </div>
         <div class="chapter-navigation" aria-label="关键磁通跳转">
           <span class="chapter-label">关键磁通</span>
           <button type="button" data-time="0.15" data-label="起点：α = 1/70">起点</button>
           <button type="button" data-time="14.75" data-label="α = 1/10">α = 1/10</button>
+          <button type="button" data-time="24.95" data-label="α = 1/6">α = 1/6</button>
+          <button type="button" data-time="37.35" data-label="α = 1/4">α = 1/4</button>
           <button type="button" data-time="64.05" data-label="α = 3/7">α = 3/7</button>
-          <button type="button" data-time="74.75" data-label="中央闭隙：α = 1/2">α = 1/2 <small>闭隙</small></button>
+          <button type="button" data-time="74.75" data-label="α = 1/2">α = 1/2 <small id="half-flux-state">闭隙</small></button>
           <button type="button" data-time="149.35" data-label="终点：α = 69/70">终点</button>
         </div>
         <p class="player-status" id="player-status" role="status" aria-live="polite">点击播放，或选择一个关键磁通定位画面。</p>
-        <noscript><p>JavaScript 未启用。视频仍可通过原生控制条播放，目录链接和下载功能也可使用。</p></noscript>
+        <noscript><p>JavaScript 未启用。可播放默认视频，或下载 <a href="assets/butterfly-order-1-20261028.mp4">|m| = 1</a>、<a href="assets/butterfly-order-2-20261028.mp4">|m| = 2</a>、<a href="assets/butterfly-order-3-20261028.mp4">|m| = 3</a>。</p></noscript>
       </section>
 
       <section id="reading" data-search="如何阅读 左图 右图 颜色 红色 图例 黑色 竖线" aria-labelledby="reading-heading">
         <h2 id="reading-heading" tabindex="-1">如何阅读</h2>
         <p>两幅图来自同一模型。左图回答“<strong>这个磁通下允许哪些能量？</strong>”，右图回答“<strong>这些能量如何随所选动量路径变化？</strong>”。</p>
         <table class="wikitable legend-table"><caption class="sr-only">图中元素与物理含义对照</caption><thead><tr><th scope="col">图中元素</th><th scope="col">含义</th></tr></thead><tbody>
-          <tr><th scope="row"><span class="swatch black"></span>黑色谱背景</th><td>对应磁通下的完整允许能量带区间；线条的深浅不表示态密度。</td></tr>
+          <tr><th scope="row"><span class="swatch black"></span>黑色谱背景</th><td>均匀磁通网格上的完整允许能量带区间；窄于像素的能带保留最小像素标记。线条深浅不表示态密度。</td></tr>
           <tr><th scope="row"><span class="swatch wine"></span><span class="swatch orange"></span>酒红与深橙填充</th><td>两族目标能隙。酒红对应负能隙标签，深橙对应正能隙标签，颜色不按能量正负命名。</td></tr>
           <tr><th scope="row"><span class="swatch red"></span>左图红点列</th><td>当前帧右图红色主秩分支的能量投影；不同红点来自不同动量。</td></tr>
           <tr><th scope="row"><span class="swatch gray"></span>右图浅灰谱线</th><td>沿所画动量路径计算的全部本征值。</td></tr>
-          <tr><th scope="row"><span class="swatch red"></span><span class="swatch peach"></span><span class="swatch cyan"></span>右图彩色分支</th><td>分别按中心、负一副本、正一副本裸态的能量排序位置选择的分支。</td></tr>
-          <tr><th scope="row">竖虚线与粗彩条</th><td>虚线标示布拉格参考位置；粗彩条的上下端点给出完整谱的全局能隙边界。</td></tr>
+          <tr><th scope="row"><span class="swatch red"></span><span class="swatch peach"></span><span class="swatch cyan"></span>右图彩色分支</th><td>选择 |m| = M 时，分别按中心、−M 副本、+M 副本裸态的能量排序位置选择分支。</td></tr>
+          <tr><th scope="row">竖虚线与粗彩条</th><td>黑色虚线标示布拉格参考位置；粗彩条的上下端点给出完整谱的全局能隙边界。</td></tr>
         </tbody></table>
-        <p>左图尚未显露的右侧白区是动画遮罩，不能据此判断那一片区域没有能态。</p>
+        <p>左图从第一帧起显示完整蝴蝶谱，三个视频共用同一底图。扫描时，黑色竖虚线与红色能量投影随当前磁通移动。</p>
       </section>
 
       <section id="model" data-search="模型 物理量 参数 alpha α 磁通 哈珀 Harper t0 q 单位 能量" aria-labelledby="model-heading">
         <h2 id="model-heading" tabindex="-1">模型与物理量</h2>
-        <aside class="infobox" aria-label="演示参数"><h3>演示参数</h3><dl><dt>模型</dt><dd>等跃迁最近邻方格</dd><dt>磁通采样</dt><dd>1493 个有理数</dd><dt>分母范围</dt><dd>q ≤ 70</dd><dt>动量采样</dt><dd>每帧 2000 点</dd><dt>视频长度</dt><dd>150.3 秒</dd><dt>输出规格</dt><dd>1800 × 800 · 10 fps</dd></dl></aside>
+        <aside class="infobox" aria-label="演示参数"><h3>演示参数</h3><dl><dt>模型</dt><dd>等跃迁最近邻方格</dd><dt>动画扫描</dt><dd>1493 个有理数，q ≤ 70</dd><dt>底图采样</dt><dd>1201 个均匀磁通，Δα = 1/1200</dd><dt>动量采样</dt><dd>每帧 2000 点</dd><dt>视频长度</dt><dd>150.3 秒</dd><dt>输出规格</dt><dd>1800 × 1000 · 10 fps</dd></dl></aside>
         <p>磁通比 <var>α</var> 表示每个方格的磁通与单电子磁通量子之比。在等价的 AAH 表述中，它也是调制波数与原晶格倒格矢的比值。</p>
         <div class="equation" aria-label="alpha等于磁通除以磁通量子，也等于p除以q"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>α</mi><mo>=</mo><mfrac><mi>Φ</mi><msub><mi>Φ</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mrow><mi>B</mi><msup><mi>a</mi><mn>2</mn></msup></mrow><mrow><mi>h</mi><mo>/</mo><mo>|</mo><mi>e</mi><mo>|</mo></mrow></mfrac><mo>=</mo><mfrac><mi>p</mi><mi>q</mi></mfrac></math></div>
         <p>有理磁通 <var>p/q</var> 下，耦合动量集合经过 <var>q</var> 步闭合，因此每个动量对应一个 <var>q × q</var> 矩阵。这里的 <var>q</var> 不是有限样品的总格点数。</p>
@@ -101,27 +110,29 @@
         <h2 id="ieb-heading" tabindex="-1">IEB 与秩分支</h2>
         <p>本视频保留的是<strong>零耦合秩延拓</strong>：先关闭耦合，记录所选裸态在能量排序中的位置；恢复耦合后，在同一动量取同一排序位置的本征值。视频右图标题明确保留这一名称。</p>
         <p>它是一种分支着色规则，未直接检验耦合波函数的中心动量权重，也没有通过连续改变耦合强度追踪波函数。因此，当前红线不被当作已经认证的波函数型 IEB。</p>
-        <p>分支副本编号与能隙整数标签有联系，但不能见到同一个字母就直接等同。当前代码约定下，在正侧布拉格位置，正能隙标签对应与负一裸副本的简并，负能隙标签对应与正一裸副本的简并。</p>
+        <p>分支副本编号与能隙整数标签有联系，但不能见到同一个字母就直接等同。当前代码约定下，在正侧布拉格位置，正能隙标签 +M 对应与 −M 裸副本的简并，负能隙标签 −M 对应与 +M 裸副本的简并。有理磁通下，副本编号按模 q 归并，因此某些分支会重合。</p>
       </section>
 
       <section id="gaps" data-search="能隙 闭隙 布拉格 Bragg 半磁通 1/2 delta ΔE" aria-labelledby="gaps-heading">
         <h2 id="gaps-heading" tabindex="-1">能隙与闭隙</h2>
         <p>底栏中的 <var>ΔE</var> 是完整谱的全局隙宽：高一条带的最低能量减去低一条带的最高能量。它不再使用沿红线相邻采样点的能量跳变量。</p>
-        <figure class="example-figure"><img src="assets/butterfly-half-flux.png" width="1800" height="800" loading="lazy" alt="半磁通画面：右图两支在零能处接触，底栏两条目标能隙宽度均为零。"><figcaption><strong>图 2　α = 1/2。</strong>两族布拉格参考线重合于归一化动量 ±1/4，中央能带在零能处接触。点击<a href="#demonstration" data-seek="74.75">定位到这段视频</a>。</figcaption></figure>
-        <p>这个例子表明：<strong>存在布拉格简并位置，不保证最终开隙。</strong>因此半磁通帧保留参考虚线，但不画有限宽度的能隙条。</p>
+        <p>能隙标签按 <var>r = mod(mp, q)</var> 对应填充秩。<var>r = 0</var> 表示没有对应的内部隙；当内部两带接触时才记为闭隙。不同整数标签在有限有理磁通下可指向同一个能隙，不能据此计为不同的物理能隙。</p>
+        <table class="wikitable"><caption>三个阶数的代表性特殊点</caption><thead><tr><th scope="col">阶数</th><th scope="col">中央闭隙示例</th><th scope="col">无内部隙</th></tr></thead><tbody><tr><th scope="row">|m| = 1</th><td>α = 1/2</td><td>扫描区间内没有</td></tr><tr><th scope="row">|m| = 2</th><td>α = 1/4、3/4</td><td>α = 1/2</td></tr><tr><th scope="row">|m| = 3</th><td>α = 1/6、1/2、5/6</td><td>α = 1/3、2/3</td></tr></tbody></table>
+        <figure class="example-figure"><img src="assets/butterfly-order-1-20261028.png" width="1800" height="1000" loading="lazy" alt="半磁通画面：右图两支在零能处接触，底栏两条目标能隙宽度均为零。"><figcaption><strong>图 2　|m| = 1，α = 1/2。</strong>两族布拉格参考线重合于归一化动量 ±1/4，中央能带在零能处接触。点击<a href="#demonstration" data-seek="74.75" data-seek-order="1">定位到 |m| = 1 视频</a>。</figcaption></figure>
+        <p>这个例子表明：<strong>存在布拉格简并位置，不保证最终开隙。</strong>因此闭隙帧保留参考虚线，但不画有限宽度的能隙条。</p>
       </section>
 
       <section id="provenance" data-search="数据 版本 来源 修复 采样 验证 时间" aria-labelledby="provenance-heading">
         <h2 id="provenance-heading" tabindex="-1">数据与版本</h2>
-        <p>页面播放的是 <time datetime="2026-10-21">2026 年 10 月 21 日</time>生成的修正版动画。该版本修复固定动量网格的背景采样混叠，并以完整谱带边修正闭隙标注；IEB 的原秩延拓实现和原彩色区域数据继续保留。</p>
-        <table class="wikitable"><tbody><tr><th scope="row">视频验收</th><td>1503 帧逐帧解码通过，1800 × 800，10 fps。</td></tr><tr><th scope="row">采样范围</th><td>1493 个离散有理磁通；不等同于直接求解无理磁通无限维算符。</td></tr><tr><th scope="row">背景与能隙标线</th><td>当前等跃迁方格模型的完整允许带区间与全局带边。</td></tr><tr><th scope="row">保留的限制</th><td>原彩色区域仍有有限网格端点误差，既有核查上界约为 4.493 × 10⁻⁴ |t₀|；IEB 的原简并端点排序约定保留。</td></tr></tbody></table>
+        <p>页面播放的是 <time datetime="2026-10-28">2026 年 10 月 28 日</time>生成的三阶动画。该版加入 |m| = 2、3，采用统一完整底图、正方形绘图区和黑色虚线；保留零耦合秩延拓。<a href="assets/butterfly-spectrum.mp4" download>2026 年 10 月 21 日旧版 MP4</a>仍可下载对比。</p>
+        <table class="wikitable"><tbody><tr><th scope="row">视频验收</th><td>每段 1503 帧，1800 × 1000，10 fps。</td></tr><tr><th scope="row">采样范围</th><td>动画仍扫描1493个有理磁通，q ≤ 70；底图独立使用 α = j/1200（j = 0,…,1200），约分后 q ≤ 1200。不等同于直接求解无理磁通无限维算符。</td></tr><tr><th scope="row">背景与能隙标线</th><td>当前等跃迁方格模型的完整允许带区间与全局带边。左图底色、目标能隙均取统一磁通网格；右图标线和数值取当前扫描磁通。</td></tr><tr><th scope="row">保留的限制</th><td>底图是有限像素的谱区间表示，极窄能带以最小像素显示；没有能量平滑或沿磁通插值。IEB 的原简并端点排序约定保留，未新增 Chern 数计算。</td></tr></tbody></table>
       </section>
 
       <section id="references" data-search="参考资料 链接 GitHub Pages 教程 Wiki 百科" aria-labelledby="references-heading">
         <h2 id="references-heading" tabindex="-1">参考资料</h2>
         <ol class="references"><li><a href="https://en.wikipedia.org/wiki/Hofstadter%27s_butterfly" target="_blank" rel="noopener noreferrer">Hofstadter’s butterfly — Wikipedia</a>，主题背景与百科式页面布局参考。</li><li><a href="https://blog.csdn.net/qq_52793095/article/details/134743440" target="_blank" rel="noopener noreferrer">GitHub 从注册到上传静态网页 — CSDN</a>，用户提供的静态网页制作方案。</li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">Creating a GitHub Pages site — GitHub Docs</a>，静态网页发布方法。</li></ol>
       </section>
-      <footer id="about" class="article-footer"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-10-27">2026 年 10 月 27 日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
+      <footer id="about" class="article-footer"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-10-28">2026 年 10 月 28 日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
     </main>
 
     <aside class="appearance" id="appearance" aria-label="外观设置">
