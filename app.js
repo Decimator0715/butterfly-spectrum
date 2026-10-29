@@ -29,7 +29,9 @@
     const action = pending;
     pending = null;
     video.playbackRate = Number(rate.value);
-    const target = Math.min(action.time, Math.max(0, video.duration - 0.02));
+    // MATLAB's last frame is presented exactly at duration; seeking just
+    // before it would display the preceding flux (68/69 instead of 69/70).
+    const target = Math.min(action.time, Math.max(0, video.duration));
     seekLabel = { generation, text: action.label };
     video.currentTime = target;
     setStatus(action.label + (action.resume ? tr('. Resuming playback.', '，继续播放。') : tr('. Press play to continue.', '。点击播放可继续观看。')));
