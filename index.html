@@ -8,8 +8,8 @@
 <meta content="light dark" name="color-scheme"/>
 <title>Hofstadter Butterfly · Flux Scan</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261029-hd3-end" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261029-hd3-end"></script>
+<link href="style.css?v=20261102-resources" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261102-resources"></script>
 <link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/></head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
@@ -36,7 +36,7 @@
 <li><a href="#ieb">IEB and rank branches</a></li>
 <li><a href="#gaps">Gaps and gap closures</a></li>
 <li><a href="#provenance">Data and versions</a></li>
-<li><a href="#references">References</a></li>
+<li id="related-toc"><a href="#related">Related reading</a></li><li><a href="#references">References</a></li>
 </ol>
 </nav>
 <main id="content">
@@ -120,11 +120,18 @@
 <p>Earlier uniform-background versions from the same day are also retained: <a download="" href="assets/butterfly-order-1-20261028.mp4">Previous |m| = 1</a> · <a download="" href="assets/butterfly-order-2-20261028.mp4">Previous |m| = 2</a> · <a download="" href="assets/butterfly-order-3-20261028.mp4">Previous |m| = 3</a>.</p>
 <table class="wikitable"><tbody><tr><th scope="row">Video validation</th><td>HD videos: 1,503 decoded frames each; 3600 × 1800; 10 fps. Earlier videos retain their original dimensions.</td></tr><tr><th scope="row">Sampling scope</th><td>The original 1,493 scan entries contain 1,282 distinct reduced rational fluxes with q ≤ 70; the repeated entries and original sequence are retained. The black spectrum uses nn = 21 diagonal momenta for 10 ≤ q ≤ 70 and an nn_spe = 201 two-dimensional grid for q ≤ 10; q = 10 occurs in both groups. Colored gaps use α = j/1200. This is not a direct infinite-dimensional calculation at irrational flux.</td></tr><tr><th scope="row">Background and gap markers</th><td>The static black spectrum is exported once from the original scatter points at high resolution and reused. Target gap fills exclude closed, absent and lower-order folded targets in the HD versions. Dynamic bars use the current scan flux, with matching colors and end caps in both panels.</td></tr><tr><th scope="row">Remaining limitations</th><td>The original finite momentum sampling is retained. Pixel resolution can hide very narrow gaps; neither energies nor band edges are smoothed or interpolated. The original IEB rank convention at degenerate endpoints is retained. No new Chern-number calculation was performed.</td></tr></tbody></table>
 </section>
-<section aria-labelledby="references-heading" data-search="references links GitHub Pages tutorial wiki" id="references">
+<section aria-labelledby="related-heading" data-search="reading resources textbook Harper closure diagnostic PDF 教材 资料 中央闭隙" id="related"><h2 id="related-heading" tabindex="-1">Related reading and downloads</h2>
+<p>A curated collection from the accompanying textbook notes and gap-closure explanations. The notes distinguish integer labels, open gaps and branch selection; the diagnostic stills show the small-denominator cases.</p>
+<ul>
+<li><strong>Textbook and animation reading guide</strong> — <a download="" href="assets/reading/butterfly-reading-en.md">English (Markdown)</a> · <a download="" href="assets/reading/butterfly-reading-zh.md">中文（Markdown）</a><br/>Based on Satija (2016), chapters 6, 9 and 10; updated for the current animation.</li>
+<li><strong>Why the central gap closes at even denominators</strong> — <a href="assets/reading/harper-central-gap-zh.pdf">PDF · Chinese, 8 pages</a> · <a download="" href="assets/reading/harper-central-gap-derivation-zh.txt">Detailed derivation (Chinese TXT)</a><br/>Transfer-matrix proof and two-path interference. Its IEB discussion provides background; the videos retain zero-coupling rank continuation.</li>
+<li><strong>Small-denominator diagnostic images</strong> — <a download="" href="assets/reading/principal-gap-diagnostics-300dpi.zip">18 PNGs · 300 DPI · ZIP</a><br/>Six fluxes per order: 1/2, 1/3, 1/4, 1/5, 1/6 and 3/7. Corrected 29 October stills preceding the final HD styling, not decoded video frames.</li>
+</ul>
+<p class="version-note">Reading route: model and flux units → spectral gap → integer candidates → physical branch → response. The square-lattice principal-label convention must not be transferred unchanged to triangular models. These downloads do not include the original textbook.</p></section><section aria-labelledby="references-heading" data-search="references links GitHub Pages tutorial wiki" id="references">
 <h2 id="references-heading" tabindex="-1">References</h2>
 <ol class="references"><li><a href="https://en.wikipedia.org/wiki/Hofstadter%27s_butterfly" rel="noopener noreferrer" target="_blank">Hofstadter’s butterfly — Wikipedia</a> — topic background and inspiration for the encyclopedia-style layout.</li><li><a href="https://blog.csdn.net/qq_52793095/article/details/134743440" rel="noopener noreferrer" target="_blank">From GitHub registration to static-page upload — CSDN (Chinese)</a> — the static-page tutorial supplied by the author.</li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" rel="noopener noreferrer" target="_blank">Creating a GitHub Pages site — GitHub Docs</a> — static website publishing instructions.</li></ol>
 </section>
-<footer class="article-footer" id="about"><p>This independent research demonstration uses an encyclopedia-style layout. It is not affiliated with Wikipedia or the Wikimedia Foundation.</p><p>Page prepared: <time datetime="2026-10-29">29 October 2026</time>. Videos and images come from local MATLAB calculations.</p><a href="#top">Back to top ↑</a></footer>
+<footer class="article-footer" id="about"><p>This independent research demonstration uses an encyclopedia-style layout. It is not affiliated with Wikipedia or the Wikimedia Foundation.</p><p>Page prepared: <time datetime="2026-11-02">2 November 2026</time>. Videos and images come from local MATLAB calculations.</p><a href="#top">Back to top ↑</a></footer>
 </main>
 <aside aria-label="Appearance settings" class="appearance" id="appearance">
 <div class="sidebar-title">Appearance</div>

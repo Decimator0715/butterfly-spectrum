@@ -8,8 +8,8 @@
 <meta content="light dark" name="color-scheme"/>
 <title>蝴蝶谱 · 磁通扫描演示</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261029-hd3-end" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261029-hd3-end"></script>
+<link href="style.css?v=20261102-resources" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261102-resources"></script>
 <link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/></head>
 <body>
 <a class="skip-link" href="#content">跳到正文</a>
@@ -36,7 +36,7 @@
 <li><a href="#ieb">IEB 与秩分支</a></li>
 <li><a href="#gaps">能隙与闭隙</a></li>
 <li><a href="#provenance">数据与版本</a></li>
-<li><a href="#references">参考资料</a></li>
+<li id="related-toc"><a href="#related">相关资料</a></li><li><a href="#references">参考资料</a></li>
 </ol>
 </nav>
 <main id="content">
@@ -120,11 +120,18 @@
 <p>同日较早的均匀谱底图版本也保留：<a download="" href="assets/butterfly-order-1-20261028.mp4">|m| = 1 旧版</a> · <a download="" href="assets/butterfly-order-2-20261028.mp4">|m| = 2 旧版</a> · <a download="" href="assets/butterfly-order-3-20261028.mp4">|m| = 3 旧版</a>。</p>
 <table class="wikitable"><tbody><tr><th scope="row">视频验收</th><td>高清版：每段1503帧全帧解码检查，3600×1800、10fps。旧版保持原尺寸。</td></tr><tr><th scope="row">采样范围</th><td>保留原1493个扫描项及其重复值，其中有1282个不同的约分有理磁通，q≤70。黑谱按原码使用nn=21的大分母对角动量点和nn_spe=201的小分母二维网格，q=10两组重叠保留。彩色能隙使用α=j/1200网格；这不是无理磁通下无限维算符的直接求解。</td></tr><tr><th scope="row">背景与能隙标线</th><td>静态黑谱从原始散点高分辨率导出后复用。高清版的目标填色排除闭隙、缺失和低阶折叠；动态隙段使用当前扫描磁通，左右同色并带端帽。</td></tr><tr><th scope="row">保留的限制</th><td>黑谱保留原代码的有限动量采样，图像受像素分辨率限制，极窄隙可能不可见；未对能量或带边作平滑、插值。IEB 的原简并端点排序约定保留，未新增 Chern 数计算。</td></tr></tbody></table>
 </section>
-<section aria-labelledby="references-heading" data-search="参考资料 链接 GitHub Pages 教程 Wiki 百科" id="references">
+<section aria-labelledby="related-heading" data-search="reading resources textbook Harper closure diagnostic PDF 教材 资料 中央闭隙" id="related"><h2 id="related-heading" tabindex="-1">相关资料与下载</h2>
+<p>整理自配套教材笔记与闭隙讲解。导读区分整数标签、实际开隙与选带规则；诊断图便于查看小分母特殊点。</p>
+<ul>
+<li><strong>教材与动画导读</strong> — <a download="" href="assets/reading/butterfly-reading-en.md">English (Markdown)</a> · <a download="" href="assets/reading/butterfly-reading-zh.md">中文（Markdown）</a><br/>以 Satija（2016）第6、9、10章笔记为主，按当前动画更新。</li>
+<li><strong>偶分母中央能隙为何闭合</strong> — <a href="assets/reading/harper-central-gap-zh.pdf">PDF · 中文，8页</a> · <a download="" href="assets/reading/harper-central-gap-derivation-zh.txt">详细推导（中文 TXT）</a><br/>转移矩阵证明与两路径相消。文中的 IEB 讨论提供背景；视频仍采用零耦合秩延拓。</li>
+<li><strong>小分母诊断图</strong> — <a download="" href="assets/reading/principal-gap-diagnostics-300dpi.zip">18张 PNG · 300 DPI · ZIP</a><br/>每阶六个磁通：1/2、1/3、1/4、1/5、1/6及3/7。10月29日修正后的诊断样稿，早于最终高清样式，并非视频解码帧。</li>
+</ul>
+<p class="version-note">阅读顺序：模型与磁通单位 → 谱隙 → 整数候选 → 物理分支 → 响应。方格模型的独立标签约定不能直接搬到三角模型；下载材料不含教材原书。</p></section><section aria-labelledby="references-heading" data-search="参考资料 链接 GitHub Pages 教程 Wiki 百科" id="references">
 <h2 id="references-heading" tabindex="-1">参考资料</h2>
 <ol class="references"><li><a href="https://en.wikipedia.org/wiki/Hofstadter%27s_butterfly" rel="noopener noreferrer" target="_blank">Hofstadter’s butterfly — Wikipedia</a>，主题背景与百科式页面布局参考。</li><li><a href="https://blog.csdn.net/qq_52793095/article/details/134743440" rel="noopener noreferrer" target="_blank">GitHub 从注册到上传静态网页 — CSDN</a>，用户提供的静态网页制作方案。</li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" rel="noopener noreferrer" target="_blank">Creating a GitHub Pages site — GitHub Docs</a>，静态网页发布方法。</li></ol>
 </section>
-<footer class="article-footer" id="about"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-10-29">2026 年 10 月 29 日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
+<footer class="article-footer" id="about"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-11-02">2026年11月2日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
 </main>
 <aside aria-label="外观设置" class="appearance" id="appearance">
 <div class="sidebar-title">外观</div>
