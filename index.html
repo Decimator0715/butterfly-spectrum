@@ -8,9 +8,9 @@
 <meta content="light dark" name="color-scheme"/>
 <title>Hofstadter Butterfly · Flux Scan</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261103-reading" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261103-reading"></script>
-<link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/><link href="explorer.css?v=20261103-reading" rel="stylesheet"/><script defer="" src="explorer.js?v=20261103-reading"></script></head>
+<link href="style.css?v=20261103-share" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261103-share"></script>
+<link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/><link href="explorer.css?v=20261103-share" rel="stylesheet"/><script defer="" src="explorer.js?v=20261103-share"></script><script defer="" src="share.js?v=20261103-share"></script></head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
@@ -79,7 +79,7 @@
 <button data-base-time="74.75" data-label="α = 1/2" data-time="75.75" type="button">α = 1/2 <small id="half-flux-state">Closed gap</small></button>
 <button data-base-time="149.35" data-label="End: α = 69/70" data-time="150.35" type="button">End</button>
 </div>
-<p aria-live="polite" class="player-status" id="player-status" role="status">Press play or choose a key flux to inspect a frame.</p><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
+<p aria-live="polite" class="player-status" id="player-status" role="status">Press play or choose a key flux to inspect a frame.</p><div class="view-share"><button class="wiki-button" data-share-view="demonstration" type="button">Share video view</button><span aria-live="polite" class="share-status" role="status"></span><div class="share-result" hidden=""><label for="share-demonstration">Link for this snapshot</label><input class="share-url" id="share-demonstration" readonly="" type="text"/><p class="share-note"></p></div></div><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
 <noscript><p>JavaScript is disabled. Play the default video or download  <a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">|m| = 1</a>,<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4">|m| = 2</a>,<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4">|m| = 3</a>.</p></noscript>
 </section><section aria-labelledby="explore-heading" data-search="HD image figures compare flux zoom 高清 图片 放大 对比" id="explore">
 <h2 id="explore-heading" tabindex="-1">Explore high-resolution figures</h2>
@@ -87,7 +87,8 @@
 <div class="image-controls"><div aria-label="Figure view" class="image-mode" role="group"><button aria-pressed="true" class="wiki-button" data-image-mode="single" type="button">Single figure</button><button aria-pressed="false" class="wiki-button" data-image-mode="compare" type="button">Compare three orders</button></div>
 <label> Flux <select id="image-flux"><option value="1/70">α = 1/70</option><option value="1/10">α = 1/10</option><option value="1/6">α = 1/6</option><option selected="" value="1/4">α = 1/4</option><option value="1/3">α = 1/3</option><option value="3/7">α = 3/7</option><option value="1/2">α = 1/2</option><option value="69/70">α = 69/70</option></select></label><label id="image-order-label">Gap order <select id="image-order"><option value="1">|m| = 1</option><option value="2">|m| = 2</option><option value="3">|m| = 3</option></select></label></div>
 <div hidden="" id="linked-entry"><button class="wiki-button" id="linked-enlarge" type="button">Linked zoom · three orders</button><p class="image-provenance">Zoom or pan any figure to inspect the same image region in all three orders. Original PNGs load when you open linked zoom.</p></div>
-<p aria-live="polite" class="comparison-note" id="comparison-note" role="status">α = 1/4 · |m| = 1: both target gaps open.</p>
+<div class="view-share"><button class="wiki-button" data-share-view="explore" type="button">Share figure view</button><span aria-live="polite" class="share-status" role="status"></span><div class="share-result" hidden=""><label for="share-explore">Link for this snapshot</label><input class="share-url" id="share-explore" readonly="" type="text"/><p class="share-note"></p></div></div><p aria-live="polite" class="comparison-note" id="comparison-note" role="status">α = 1/4 · |m| = 1: both target gaps open.</p>
+<details class="technical-disclosure" id="flux-explanation"><summary id="flux-explanation-title">Why these gap states?</summary><p id="flux-explanation-scope"></p><ul id="flux-explanation-items"></ul><p id="flux-explanation-limit"></p><a href="central-gap.html#section-3">Central-gap proof</a> · <a href="central-gap.html#section-4">Integer-label correspondence</a> · <a href="reading-guide.html#section-3">Direct separation versus global gap</a></details>
 <div class="keyframe-list"><figure class="keyframe-card" data-image-order="1">
 <figcaption><strong>|m| = 1</strong> <span class="keyframe-flux">α = 1/4</span> <span class="keyframe-status">Both target gaps open</span></figcaption>
 <a aria-label="Enlarge figure |m| = 1, α = 1/4" class="image-open" href="assets/keyframes/m1-alpha-1-4.png"><img alt="|m| = 1, α = 1/4; Both target gaps open" height="720" loading="lazy" src="assets/keyframes/previews/m1-alpha-1-4.webp" width="1440"/></a>

@@ -8,9 +8,9 @@
 <meta content="light dark" name="color-scheme"/>
 <title>蝴蝶谱 · 磁通扫描演示</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261103-reading" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261103-reading"></script>
-<link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/><link href="explorer.css?v=20261103-reading" rel="stylesheet"/><script defer="" src="explorer.js?v=20261103-reading"></script></head>
+<link href="style.css?v=20261103-share" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261103-share"></script>
+<link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/><link href="explorer.css?v=20261103-share" rel="stylesheet"/><script defer="" src="explorer.js?v=20261103-share"></script><script defer="" src="share.js?v=20261103-share"></script></head>
 <body>
 <a class="skip-link" href="#content">跳到正文</a>
 <header class="site-header">
@@ -79,7 +79,7 @@
 <button data-base-time="74.75" data-label="α = 1/2" data-time="75.75" type="button">α = 1/2 <small id="half-flux-state">闭隙</small></button>
 <button data-base-time="149.35" data-label="终点：α = 69/70" data-time="150.35" type="button">终点</button>
 </div>
-<p aria-live="polite" class="player-status" id="player-status" role="status">点击播放，或选择一个关键磁通定位画面。</p><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
+<p aria-live="polite" class="player-status" id="player-status" role="status">点击播放，或选择一个关键磁通定位画面。</p><div class="view-share"><button class="wiki-button" data-share-view="demonstration" type="button">分享视频视图</button><span aria-live="polite" class="share-status" role="status"></span><div class="share-result" hidden=""><label for="share-demonstration">本次视图的链接</label><input class="share-url" id="share-demonstration" readonly="" type="text"/><p class="share-note"></p></div></div><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
 <noscript><p>JavaScript 未启用。可播放默认视频，或下载 <a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">|m| = 1</a>、<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4">|m| = 2</a>、<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4">|m| = 3</a>。</p></noscript>
 </section><section aria-labelledby="explore-heading" data-search="HD image figures compare flux zoom 高清 图片 放大 对比" id="explore">
 <h2 id="explore-heading" tabindex="-1">高清图浏览与对比</h2>
@@ -87,7 +87,8 @@
 <div class="image-controls"><div aria-label="图像视图" class="image-mode" role="group"><button aria-pressed="true" class="wiki-button" data-image-mode="single" type="button">单图浏览</button><button aria-pressed="false" class="wiki-button" data-image-mode="compare" type="button">三阶对比</button></div>
 <label> 磁通 <select id="image-flux"><option value="1/70">α = 1/70</option><option value="1/10">α = 1/10</option><option value="1/6">α = 1/6</option><option selected="" value="1/4">α = 1/4</option><option value="1/3">α = 1/3</option><option value="3/7">α = 3/7</option><option value="1/2">α = 1/2</option><option value="69/70">α = 69/70</option></select></label><label id="image-order-label">能隙阶数 <select id="image-order"><option value="1">|m| = 1</option><option value="2">|m| = 2</option><option value="3">|m| = 3</option></select></label></div>
 <div hidden="" id="linked-entry"><button class="wiki-button" id="linked-enlarge" type="button">三阶联动放大</button><p class="image-provenance">缩放或移动任意一张图，同步查看三个阶数的相同图像区域；打开联动放大时才加载高清原图。</p></div>
-<p aria-live="polite" class="comparison-note" id="comparison-note" role="status">α = 1/4 · |m|=1：两个目标能隙开放。</p>
+<div class="view-share"><button class="wiki-button" data-share-view="explore" type="button">分享图片视图</button><span aria-live="polite" class="share-status" role="status"></span><div class="share-result" hidden=""><label for="share-explore">本次视图的链接</label><input class="share-url" id="share-explore" readonly="" type="text"/><p class="share-note"></p></div></div><p aria-live="polite" class="comparison-note" id="comparison-note" role="status">α = 1/4 · |m|=1：两个目标能隙开放。</p>
+<details class="technical-disclosure" id="flux-explanation"><summary id="flux-explanation-title">为什么会出现这些能隙状态？</summary><p id="flux-explanation-scope"></p><ul id="flux-explanation-items"></ul><p id="flux-explanation-limit"></p><a href="central-gap-zh.html#section-3">中央闭隙证明</a> · <a href="central-gap-zh.html#section-4">整数标签对应</a> · <a href="reading-guide-zh.html#section-3">直接间隔与全局隙</a></details>
 <div class="keyframe-list"><figure class="keyframe-card" data-image-order="1">
 <figcaption><strong>|m| = 1</strong> <span class="keyframe-flux">α = 1/4</span> <span class="keyframe-status">两个目标能隙开放</span></figcaption>
 <a aria-label="放大图像 |m| = 1, α = 1/4" class="image-open" href="assets/keyframes/m1-alpha-1-4.png"><img alt="|m| = 1, α = 1/4; 两个目标能隙开放" height="720" loading="lazy" src="assets/keyframes/previews/m1-alpha-1-4.webp" width="1440"/></a>

@@ -165,11 +165,23 @@
     const nextRate = navigation.get('rate');
     if (['0.5', '1', '1.5', '2'].includes(nextRate)) rate.value = nextRate;
     changeOrder(nextOrder, Number.isFinite(seconds) ? Math.max(0, seconds) : 0,
-      tr('Language changed; the flux position is preserved', '已切换语言，保留当前磁通位置'));
+      tr('View restored; the flux position is preserved', '已恢复视图，保留磁通位置'));
   }
   let preferredSource = navigation.get('source');
   if (!preferredSource) { try { preferredSource = localStorage.getItem('butterflyVideoSource'); } catch { /* Optional preference. */ } }
   if (preferredSource === 'bilibili') switchSource('bilibili');
+
+  // Share the pending seek too, even when slow media has no metadata yet.
+  // A cross-origin Bilibili player does not expose its playback position here.
+  document.addEventListener('butterfly:share-state', event => {
+    const url = event.detail.url;
+    url.searchParams.set('order', order);
+    url.searchParams.set('source', source);
+    if (source === 'github') {
+      url.searchParams.set('time', String(pending?.time ?? video.currentTime));
+      url.searchParams.set('rate', rate.value);
+    }
+  });
 
   const root = document.documentElement;
   const settings = { font: ['small', 'standard', 'large'], width: ['standard', 'wide'], theme: ['light', 'dark', 'system'] };

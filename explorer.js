@@ -16,6 +16,39 @@
     folded: tr('Folds to lower order', '折叠为低阶标签'),
     absent: tr('No internal target gap', '无内部目标能隙')
   };
+  function explainFlux() {
+    const {p,q} = data[`1:${flux.value}`];
+    document.getElementById('flux-explanation-title').textContent = tr(`Why these gap states at α = ${flux.value}?`, `α = ${flux.value}：为什么会出现这些能隙状态？`);
+    document.getElementById('flux-explanation-scope').textContent = tr(
+      `This is the nearest-neighbor square-lattice model, with reduced flux p/q = ${p}/${q}. Candidate band counts satisfy r ≡ p m (mod q).`,
+      `这里采用最近邻方格模型，磁通已约分为 p/q = ${p}/${q}。候选带数满足 r ≡ p m（mod q）。`);
+    const list = document.getElementById('flux-explanation-items');list.replaceChildren();
+    for (const m of [1,2,3]) {
+      const item = data[`${m}:${flux.value}`];
+      let explanation;
+      if (item.state === 'closed') explanation = tr(
+        `q = ${q} = 2|m|: the targets meet at the central band count r = ${q/2}. The central bands touch at E = 0 in this model, so the global gap is zero.`,
+        `q = ${q} = 2|m|，目标对应中央带数 r = ${q/2}。本模型中央两带在 E = 0 接触，因此全局隙为零。`);
+      else if (item.state === 'absent') explanation = tr(
+        `±${m} are multiples of q = ${q}, giving r ≡ 0. This is not an internal band count 1,…,q−1, so there is no internal target gap for this order.`,
+        `±${m} 是 q = ${q} 的整数倍，得到 r ≡ 0，不属于 1,…,q−1 的内部带数，因此这一阶没有内部目标隙。`);
+      else if (item.state === 'folded') {
+        const lower = Math.min(m % q, q - m % q);
+        explanation = tr(
+          `Modulo q = ${q}, ±${m} have representatives of magnitude ${lower}. They refer to lower-order labels, not independent order-${m} gaps.`,
+          `模 q = ${q} 下，±${m} 的代表标签绝对值为 ${lower}，对应低阶标签，不是独立的 ${m} 阶能隙。`);
+        if (2*lower === q) explanation += tr(' Here that lower-order label is central and its gap is closed.', ' 此处该低阶标签恰为中央标签，其能隙也闭合。');
+      } else explanation = tr(
+        `q = ${q} > 2|m| = ${2*m}, so this order is an independent target under the current labeling convention. The existing render records show both target global gaps open.`,
+        `q = ${q} > 2|m| = ${2*m}，在当前标签约定下可作为独立目标；已有渲染记录显示两个目标全局隙均开放。`);
+      const li = document.createElement('li');li.dataset.explainedOrder = m;li.dataset.state = item.state;
+      const strong = document.createElement('strong');strong.textContent = `|m| = ${m}: `;
+      li.append(strong, document.createTextNode(explanation));list.append(li);
+    }
+    document.getElementById('flux-explanation-limit').textContent = tr(
+      'The integer relation alone does not prove a gap is open or determine its width. “No independent higher-order gap” does not mean the spectrum has no other gaps. These statements use the present model and global spectral gaps, not arbitrary fixed-momentum slices.',
+      '整数关系本身不能证明开隙或给出隙宽。“没有独立高阶隙”不等于整个谱没有其他隙。以上说明针对当前模型的全局谱隙，不能直接用于任意固定动量切片。');
+  }
   function render() {
     modes.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.imageMode === mode)));
     document.getElementById('image-order-label').hidden = mode === 'compare';
@@ -46,6 +79,7 @@
     if (mode === 'compare' && cards.some(c => data[`${c.dataset.imageOrder}:${flux.value}`].state === 'folded')) {
       note.textContent += tr('. A folded label is not an independent higher-order gap; lower-order gaps may remain.', '。折叠标签不作为独立高阶能隙，低阶能隙仍可存在。');
     }
+    explainFlux();
   }
   modes.forEach(b => b.addEventListener('click', () => { mode = b.dataset.imageMode; render(); }));
   flux.addEventListener('change', render); order.addEventListener('change', render);

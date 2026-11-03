@@ -36,3 +36,8 @@
 @media(max-width:500px){#linked-dialog{padding:8px;width:98vw;max-width:98vw;height:96dvh;max-height:96dvh}.linked-pane-heading{gap:6px;font-size:11px;min-height:25px}.linked-panes{gap:6px}#linked-dialog .zoom-help{font-size:11px}}
 @media print{#linked-entry,#linked-dialog{display:none!important}}
 .online-reading-link{display:inline-block;margin:0 10px;font-weight:600}
+.view-share{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:14px 0;font-size:13px}
+.share-status{color:var(--muted)}.share-result{flex-basis:100%;min-width:0}.share-result label{display:block;margin-bottom:4px}
+.share-url{box-sizing:border-box;width:100%;padding:8px;border:1px solid var(--border);background:var(--background);color:var(--text);font-size:13px}.share-note{margin:5px 0 0;color:var(--muted);font-size:12px}
+#flux-explanation{font-size:14px;line-height:1.8}#flux-explanation-items li{margin-bottom:10px}
+@media print{.view-share{display:none!important}}
