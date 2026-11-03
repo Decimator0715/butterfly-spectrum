@@ -1,0 +1,17 @@
+/* Static encyclopedia reading pages; no external fonts or equation service. */
+.reading-page .page-layout{grid-template-columns:210px minmax(0,850px);justify-content:center;gap:48px}
+.reading-page .site-header{max-width:1196px;justify-content:space-between;gap:20px}
+.reading-language,.reading-tabs,.reading-downloads,.reading-next{display:flex;flex-wrap:wrap;gap:10px 22px}
+.reading-language [aria-current=page],.reading-tabs [aria-current=page]{font-weight:700;color:var(--text)}
+.reading-page h1{font-size:32px;border-bottom:1px solid var(--border);padding-bottom:12px}
+.reading-breadcrumb{font-size:13px;margin-bottom:16px;color:var(--muted)}
+.reading-tabs{padding:10px 0;border-bottom:1px solid var(--subtle);margin-bottom:18px;font-size:14px}
+.reading-downloads{padding:12px 16px;background:var(--surface);border:1px solid var(--subtle);font-size:13px;margin-bottom:24px}
+.reading-page article{line-height:1.9;overflow-wrap:break-word}.reading-page article h2{font-size:25px;margin-top:38px}
+.reading-equation{overflow-x:auto;max-width:100%;padding:18px 12px;margin:12px 0 22px;border-left:2px solid var(--subtle);background:var(--surface)}
+.reading-equation math{font-size:1.08em;min-width:max-content}math[display=inline]{font-size:1em}
+.reading-page .contents{max-height:85dvh;overflow-y:auto}.reading-next{margin-top:32px;border-top:1px solid var(--border);padding-top:20px;font-size:14px}
+.reading-math-hint{font-size:12px;color:var(--muted)}
+@media(max-width:1000px){.reading-page .page-layout{display:grid;grid-template-columns:minmax(0,1fr);padding:10px 24px 36px}.reading-page .contents{display:block;position:static;width:auto;height:auto;max-height:none;padding:0 0 14px;border:0;border-bottom:1px solid var(--subtle);z-index:auto}.reading-page .contents ol{columns:2;column-gap:20px}.reading-page .contents li{break-inside:avoid}.reading-page .site-header{padding:22px 24px}.reading-page article{max-width:850px}}
+@media(max-width:600px){.reading-page .site-header{align-items:flex-start;flex-direction:column;gap:18px}.reading-page .wordmark strong{font-size:22px;letter-spacing:1px}.reading-page .brand-symbol{font-size:42px;width:38px}.reading-page .page-layout{padding:0 16px 30px;gap:22px}.reading-page .contents ol{columns:1}.reading-page h1{font-size:27px}.reading-page article h2{font-size:23px}.reading-equation{font-size:14px;padding:16px 8px}.reading-page .subtitle{font-size:12px}}
+@media print{.reading-page .site-header,.reading-page .contents,.reading-tabs,.reading-language,.reading-next{display:none}.reading-page .page-layout{display:block}.reading-equation{overflow:visible;background:none}a{color:inherit}}

@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>蝴蝶谱：教材导读与动画阅读说明 · Hofstadter Butterfly</title><meta name="description" content="蝴蝶谱：教材导读与动画阅读说明"><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="style.css?v=20261103-reading"><link rel="stylesheet" href="reading.css?v=20261103-reading"><link rel="alternate" hreflang="en" href="reading-guide.html"><link rel="alternate" hreflang="zh-CN" href="reading-guide-zh.html"></head>
+<body class="reading-page"><a class="skip-link" href="#content">跳至正文</a><header class="site-header"><a class="wordmark" href="zh.html"><span class="brand-symbol" aria-hidden="true">Φ</span><span><strong>Hofstadter Butterfly</strong><small>物理演示 · 在线阅读</small></span></a><nav class="reading-language" aria-label="Language / 语言"><a href="reading-guide.html" lang="en" >English</a><a href="reading-guide-zh.html" lang="zh-CN" aria-current="page">中文</a></nav></header>
+<div class="page-layout" id="top"><nav class="contents" aria-label="目录"><div class="sidebar-title">目录</div><ol><li><a href="#section-1">如何读当前动画</a></li><li><a href="#section-2">整数候选不等于开放能隙</a></li><li><a href="#section-3">直接隔离与全局隙</a></li><li><a href="#section-4">着色分支说明什么</a></li><li><a href="#section-5">建议阅读路线</a></li><li><a href="#section-6">配套材料与适用范围</a></li></ol></nav>
+<main id="content"><nav class="reading-breadcrumb"><a href="zh.html#related">演示首页</a> / 在线阅读</nav><h1>蝴蝶谱：教材导读与动画阅读说明</h1>
+<p class="subtitle">在线整理版 · 2026年11月3日</p><nav class="reading-tabs"><a href="reading-guide-zh.html" aria-current="page">教材导读</a><a href="central-gap-zh.html" >中央闭隙推导</a></nav>
+<div class="reading-downloads"><a href="assets/reading/butterfly-reading-zh.md" download>下载导读 · Markdown</a></div><p class="reading-math-hint">窄屏下可左右滑动长公式，查看完整内容。</p><article><p>公开整理版，2026年11月2日。依据 Satija《Butterfly in the Quantum World》 （2016）的本地逐章笔记，重点为第6、9、10章。本文是独立概括，不是教材复制件。</p>
+<h2 id="section-1" tabindex="-1">如何读当前动画</h2>
+<p>左图汇总不同磁通下的允许能量；右图展示当前磁通在 <math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="k_y=k_x"><mrow>
+                              <msub><mrow><mi>k</mi></mrow><mrow><mi>y</mi></mrow></msub> <mo class="MathClass-rel" stretchy="false">=</mo> <msub><mrow><mi>k</mi></mrow><mrow><mi>x</mi></mrow></msub>
+</mrow></math> 路径上的动量分辨能量。 左右同色隙段表示同一个全局能量区间。红列是所选红色秩分支的能量投影，不是态密度。 10月29日新版从首帧起显示完整黑色底谱；磁通扫描是参数扫描，不是真实时间动力学。</p>
+<h2 id="section-2" tabindex="-1">整数候选不等于开放能隙</h2>
+<p>约分后的磁通 <math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="\alpha=p/q"><mrow>
+                              <mi>α</mi> <mo class="MathClass-rel" stretchy="false">=</mo> <mi>p</mi><mo class="MathClass-bin" stretchy="false">∕</mo><mi>q</mi>
+</mrow></math>、填充 r 条带时，整数候选满足</p>
+<div class="reading-equation" tabindex="0"><math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="block" aria-label="\nu=r/q=m\alpha+g,\qquad pm+qg=r."><mrow>
+                    <mi>ν</mi> <mo class="MathClass-rel" stretchy="false">=</mo> <mi>r</mi><mo class="MathClass-bin" stretchy="false">∕</mo><mi>q</mi> <mo class="MathClass-rel" stretchy="false">=</mo> <mi mathvariant="italic">𝑚𝛼</mi> <mo class="MathClass-bin" stretchy="false">+</mo> <mi>g</mi><mo class="MathClass-punc" stretchy="false">,</mo><mspace class="qquad" width="2em" /><mi mathvariant="italic">𝑝𝑚</mi> <mo class="MathClass-bin" stretchy="false">+</mo> <mi mathvariant="italic">𝑞𝑔</mi> <mo class="MathClass-rel" stretchy="false">=</mo> <mi>r</mi><mo class="MathClass-punc" stretchy="false">.</mo>
+</mrow></math></div>
+<p>若 <math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="(m_0,g_0)"><mrow>
+                              <mo class="MathClass-open" stretchy="false">(</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>0</mn></mrow></msub><mo class="MathClass-punc" stretchy="false">,</mo><msub><mrow><mi>g</mi></mrow><mrow><mn>0</mn></mrow></msub><mo class="MathClass-close" stretchy="false">)</mo>
+</mrow></math> 是一组解，<math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="(m_0+nq,g_0-np)"><mrow>
+                         <mo class="MathClass-open" stretchy="false">(</mo><msub><mrow><mi>m</mi></mrow><mrow><mn>0</mn></mrow></msub> <mo class="MathClass-bin" stretchy="false">+</mo> <mi mathvariant="italic">𝑛𝑞</mi><mo class="MathClass-punc" stretchy="false">,</mo><msub><mrow><mi>g</mi></mrow><mrow><mn>0</mn></mrow></msub> <mo class="MathClass-bin" stretchy="false">−</mo> <mi mathvariant="italic">𝑛𝑝</mi><mo class="MathClass-close" stretchy="false">)</mo>
+</mrow></math> 也是解。这个整数方程本身不能选定物理陈数 分支，也不能给出能隙是否打开、宽度或绝对能量位置。</p>
+<p>当前最近邻方格模型仅在 <math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="q&gt;2|m|"><mrow>
+                             <mi>q</mi> <mo class="MathClass-rel" stretchy="false">&gt;</mo> <mn>2</mn><mo class="MathClass-rel" stretchy="false">|</mo><mi>m</mi><mo class="MathClass-rel" stretchy="false">|</mo>
+</mrow></math> 且实际全局隙开放时标注独立目标阶数。 <math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="inline" aria-label="q=2|m|"><mrow>
+                             <mi>q</mi> <mo class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mo class="MathClass-rel" stretchy="false">|</mo><mi>m</mi><mo class="MathClass-rel" stretchy="false">|</mo>
+</mrow></math> 时中央隙闭合；更小分母对应低阶代表或没有内部隙。 此规则不能无条件用于三角格子或新增跃迁项的模型。</p>
+<h2 id="section-3" tabindex="-1">直接隔离与全局隙</h2>
+<p>排序能带的两个量分别为</p>
+<div class="reading-equation" tabindex="0"><math xmlns="http://www.w3.org/1998/Math/MathML" class="equation" display="block" aria-label="d_r=\min_{\mathbf k}(E_{r+1}-E_r),\qquad&#10;\Delta_r=\min_{\mathbf k}E_{r+1}-\max_{\mathbf k}E_r."><mrow>
+           <msub><mrow><mi>d</mi></mrow><mrow><mi>r</mi></mrow></msub> <mo class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow><mi class="qopname"> min</mi><mo> ⁡ </mo></mrow><mrow><mstyle mathvariant="bold"><mi>𝐤</mi></mstyle></mrow></munder><mo class="MathClass-open" stretchy="false">(</mo><msub><mrow><mi>E</mi></mrow><mrow><mi>r</mi><mo class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub> <mo class="MathClass-bin" stretchy="false">−</mo> <msub><mrow><mi>E</mi></mrow><mrow><mi>r</mi></mrow></msub><mo class="MathClass-close" stretchy="false">)</mo><mo class="MathClass-punc" stretchy="false">,</mo><mspace class="qquad" width="2em" /><msub><mrow><mi mathvariant="normal">Δ</mi></mrow><mrow><mi>r</mi></mrow></msub> <mo class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow><mi class="qopname"> min</mi><mo> ⁡ </mo></mrow><mrow><mstyle mathvariant="bold"><mi>𝐤</mi></mstyle></mrow></munder><msub><mrow><mi>E</mi></mrow><mrow><mi>r</mi><mo class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub> <mo class="MathClass-bin" stretchy="false">−</mo><munder class="msub"><mrow><mi class="qopname"> max</mi><mo> ⁡ </mo></mrow><mrow><mstyle mathvariant="bold"><mi>𝐤</mi></mstyle></mrow></munder><msub><mrow><mi>E</mi></mrow><mrow><mi>r</mi></mrow></msub><mo class="MathClass-punc" stretchy="false">.</mo>
+</mrow></math></div>
+<p>直接间隔为正，使秩 r 子空间在每个动量处与其余态分离；全局隙为正，才允许同一个 固定费米能处于所有动量的两带之间。动画报告后者，不把单条着色分支的跳变当作隙宽。</p>
+<h2 id="section-4" tabindex="-1">着色分支说明什么</h2>
+<p>视频保留零耦合秩延拓：逐动量记录指定裸动量副本的能量排序位置，恢复耦合后取同秩 本征值。这既不是随耦合连续追踪波函数，也不是直接检验中心动量权重。因此不将红支 称为已经验证的波函数型 IEB。副本编号和能隙标签是不同对象，有理磁通下尤其要注意模 q 重合的副本。</p>
+<h2 id="section-5" tabindex="-1">建议阅读路线</h2>
+<ul><li>第6章：Harper 模型、有理磁通、谱集合与有限分辨率。</li><li>第8–9章：Berry 相位、隔离子空间、坐标朝向与陈数。</li><li>第10章：整数能隙标签、候选解和 Wannier 直线。</li><li>第2–4章：Farey 算术与特定层级构造。</li><li>第12章：截至2016年的实验综述，不能当成当前实验进展。</li></ul>
+<p>理解顺序：确定模型和磁通单位 → 确认谱隙 → 列整数候选 → 以独立证据选定物理分支 → 在填充与符号约定下解释响应。各连接都有条件，不能仅凭图像相似认定物理等价。</p>
+<h2 id="section-6" tabindex="-1">配套材料与适用范围</h2>
+<p>八页 Harper 讲解先说明偶分母中央闭隙，再用动量空间两路径相消解释机制。其波函数 选带讨论是背景知识，并不替换动画的秩延拓算法；符号以该文档自身定义为准。</p>
+<p>18张诊断图是10月29日修正独立阶数后的300 DPI样稿，每阶六个磁通。它们早于最终 高清视频样式，不冒称视频解码帧。观看最终视频时，仍可下载播放器旁各阶对应的高清关键帧。</p>
+<p>本资料包不含教材原书、论文草稿或内部研究记录。有限采样和像素不证明任意窄隙均已收敛； 本次没有新增陈数计算。</p></article>
+<nav class="reading-next"><a href="central-gap-zh.html">继续阅读：中央闭隙推导</a><a href="zh.html?figureView=compare#explore">查看三阶对比</a></nav>
+<footer class="article-footer"><p>配套材料的在线阅读版，原下载材料保持原内容。公式随页面提供，无需连接外部公式服务。</p><a href="#top">返回顶部</a></footer></main></div></body></html>

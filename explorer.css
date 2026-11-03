@@ -35,3 +35,4 @@
 .linked-load{height:16px;line-height:16px;font-size:11px;margin:0;color:var(--muted);overflow:hidden}
 @media(max-width:500px){#linked-dialog{padding:8px;width:98vw;max-width:98vw;height:96dvh;max-height:96dvh}.linked-pane-heading{gap:6px;font-size:11px;min-height:25px}.linked-panes{gap:6px}#linked-dialog .zoom-help{font-size:11px}}
 @media print{#linked-entry,#linked-dialog{display:none!important}}
+.online-reading-link{display:inline-block;margin:0 10px;font-weight:600}
