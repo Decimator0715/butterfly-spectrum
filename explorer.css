@@ -1,0 +1,24 @@
+/* Encyclopedia-style original-image browsing, without external UI dependencies. */
+.technical-disclosure{margin:14px 0;border:1px solid var(--subtle);background:var(--surface);padding:0 14px}
+.technical-disclosure>summary{padding:12px 0;cursor:pointer;color:var(--link);font-weight:600;font-size:.92em}
+.technical-disclosure[open]{padding-bottom:12px}.technical-disclosure .wikitable{margin:10px 0}
+.parameter-details .infobox{float:none;width:100%;margin:0;padding:8px 0;border:0}
+.image-controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:18px 0;font-size:14px}
+.image-mode{display:flex;gap:6px}.image-controls label{display:flex;align-items:center;gap:8px}
+.image-mode [aria-pressed=true]{border-color:var(--active);box-shadow:inset 0 -2px var(--active);font-weight:650}
+.comparison-note{padding:12px 14px;background:var(--surface);border-left:3px solid var(--border);font-size:14px;line-height:1.7}
+.keyframe-card{margin:20px 0 26px;border:1px solid var(--border);background:var(--background)}
+.keyframe-card figcaption{padding:12px 14px;display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;border-bottom:1px solid var(--subtle);font-size:14px}
+.keyframe-status{color:var(--muted)}.image-open{display:block;position:relative;cursor:zoom-in;background:#fff}
+.image-open[data-loading=true]::before{content:attr(data-loading-text);position:absolute;inset:40% 10% auto;text-align:center;color:#54595d;font-size:14px}
+.image-open img{display:block;width:100%;height:auto}.image-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;padding:10px 14px;font-size:13px;border-top:1px solid var(--subtle)}
+.image-actions>span{margin-left:auto;color:var(--muted)}.image-provenance{font-size:13px;line-height:1.7;color:var(--muted)}
+#image-dialog{box-sizing:border-box;width:min(96vw,1500px);max-width:96vw;height:min(92dvh,1100px);max-height:92dvh;padding:18px;background:var(--background);color:var(--text);border:1px solid var(--border)}
+#image-dialog[open]{display:flex;flex-direction:column;gap:10px}#image-dialog::backdrop{background:rgb(0 0 0 / .66)}
+.image-dialog-heading,.zoom-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}.image-dialog-heading{justify-content:space-between}.image-dialog-heading strong{font-size:15px}
+.zoom-controls{font-size:14px}.zoom-controls button{min-width:38px}.zoom-controls a{margin-left:auto}.zoom-help,#zoom-status{margin:0;font-size:12px;color:var(--muted)}
+#image-viewport{flex:1;min-height:100px;overflow:auto;overscroll-behavior:contain;background:#fff;border:1px solid var(--border);cursor:grab;touch-action:pan-x pan-y}
+#image-viewport.dragging{cursor:grabbing}#zoom-image{display:block;max-width:none;height:auto;margin:0 auto;user-select:none}
+.image-modal-open{overflow:hidden}.zoom-controls output{min-width:42px;text-align:center}
+@media(max-width:500px){.image-controls{gap:12px}.image-mode{width:100%}.image-controls label{font-size:13px}.image-actions{gap:10px}.image-actions>span{font-size:11px}.keyframe-card figcaption{padding:10px}.comparison-note{font-size:13px}#image-dialog{padding:10px;width:98vw;max-width:98vw;height:94dvh;max-height:94dvh}.image-dialog-heading strong{font-size:12px}.zoom-controls{gap:6px;font-size:12px}.zoom-controls a{margin-left:0;width:100%}.zoom-help{font-size:11px}}
+@media print{.image-controls,.image-actions,#image-dialog{display:none!important}.keyframe-card{break-inside:avoid}}
