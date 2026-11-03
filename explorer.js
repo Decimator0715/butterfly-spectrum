@@ -32,10 +32,10 @@
       image.alt = caption;
       const open = card.querySelector('.image-open');
       open.href = item.src; open.setAttribute('aria-label', tr('Enlarge: ', '放大：') + caption);
-      if (visible && image.getAttribute('src') !== item.src) {
+      if (visible && image.getAttribute('src') !== item.preview) {
         image.style.visibility = 'hidden';open.dataset.loading = 'true';
-        open.dataset.loadingText = tr('Loading PNG…', '正在载入 PNG…');
-        image.src = item.src;
+        open.dataset.loadingText = tr('Loading preview…', '正在载入预览…');
+        image.src = item.preview;
         if (image.complete && image.naturalWidth) {image.style.visibility = '';open.dataset.loading = 'false';}
       }
       card.querySelector('.single-image-download').href = item.src;
