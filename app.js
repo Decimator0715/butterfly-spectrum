@@ -14,6 +14,10 @@
   let generation = 0;
   let pending = null;
   let seekLabel = null;
+  let source = 'github';
+  let nativeTime = 0;
+  const bili = document.getElementById('bilibili-player');
+  const sourceButtons = [...document.querySelectorAll('[data-source]')];
   const selectedButton = () => orderButtons.find(button => button.dataset.order === order);
   const currentSourceMatches = () => video.currentSrc === new URL(selectedButton().dataset.video, location.href).href;
   const showError = text => { status.textContent = text; status.classList.add('error'); };
@@ -25,6 +29,7 @@
     }
   };
   const applyNavigation = () => {
+    if (source !== 'github') return;
     if (!pending || video.readyState < 1 || !currentSourceMatches()) return;
     const action = pending;
     pending = null;
@@ -38,6 +43,7 @@
     if (action.resume) startPlaying();
   };
   const changeOrder = (nextOrder, explicitTime = null, label = null) => {
+    if (explicitTime !== null && source === 'bilibili') switchSource('github');
     const button = orderButtons.find(item => item.dataset.order === String(nextOrder));
     if (!button) return;
     const oldOffset = Number(selectedButton().dataset.timeOffset || 0);
@@ -62,6 +68,10 @@
     if (format) format.textContent = button.dataset.format;
     chapterButtons.forEach(chapter => { if (chapter.dataset.baseTime) { const base = Number(chapter.dataset.baseTime); chapter.dataset.time = String(base + (base === 0.15 ? 0 : newOffset)); } });
     document.getElementById('half-flux-state').textContent = order === '2' ? tr('No internal gap', '无内部隙') : order === '3' ? tr('Lower-order folding', '低阶折叠') : tr('Closed gap', '闭隙');
+    document.getElementById('bilibili-open').href = `https://www.bilibili.com/video/${button.dataset.bvid}/`;
+    if (source === 'bilibili') {
+      pending = null; nativeTime = 0; showBilibili(); return;
+    }
     if (changed) {
       video.poster = button.dataset.poster;
       video.src = button.dataset.video;
@@ -69,6 +79,38 @@
       video.load();
     } else applyNavigation();
   };
+  function showBilibili() {
+    const url = new URL('https://player.bilibili.com/player.html');
+    url.search = new URLSearchParams({ bvid: selectedButton().dataset.bvid, autoplay: '0', danmaku: '0' });
+    bili.src = url.href;
+    bili.title = tr(`Bilibili: |m| = ${order}`, `B站视频：|m| = ${order}`);
+    document.getElementById('video-format-value').textContent = tr('Bilibili · platform-selected quality', 'B站 · 清晰度由平台提供');
+    setStatus(tr('Use the Bilibili player controls. Switching orders restarts playback. Embedded quality is set by Bilibili; use “Watch on Bilibili” or the original download for detailed viewing. For precise flux navigation, switch to Original HD.', '请使用B站播放器内的播放与倍速控制；换阶数从头播放。外嵌清晰度由B站提供，精细查看可“在B站打开”或下载原片；精确磁通定位请切换至原始高清源。'));
+  }
+  function switchSource(next) {
+    if (source === next) return;
+    if (source === 'github') nativeTime = pending?.time ?? video.currentTime;
+    source = next; generation += 1; pending = null; seekLabel = null;
+    video.pause();
+    video.hidden = source === 'bilibili'; bili.hidden = source !== 'bilibili';
+    play.hidden = source === 'bilibili';
+    document.querySelector('.rate-label').hidden = source === 'bilibili';
+    document.querySelector('.chapter-navigation').hidden = source === 'bilibili';
+    sourceButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.source === source)));
+    try { localStorage.setItem('butterflyVideoSource', source); } catch { /* Optional preference. */ }
+    if (source === 'bilibili') {
+      video.removeAttribute('src'); video.querySelectorAll('source').forEach(item => item.removeAttribute('src')); video.load();
+      showBilibili();
+    } else {
+      bili.removeAttribute('src');
+      document.getElementById('video-format-value').textContent = selectedButton().dataset.format;
+      video.poster = selectedButton().dataset.poster;
+      video.src = selectedButton().dataset.video;
+      pending = { time: nativeTime, resume: false, label: tr('Original HD selected', '已选择原始高清源') };
+      setStatus(tr('Loading original HD video…', '正在载入原始高清视频…')); video.load();
+    }
+  }
+  sourceButtons.forEach(button => button.addEventListener('click', () => switchSource(button.dataset.source)));
   const seekTo = (seconds, label) => {
     video.pause();
     pending = { time: seconds, resume: false, label: tr(`Positioned at ${label}`, `已定位到${label}`) };
@@ -79,6 +121,7 @@
   orderButtons.forEach(button => button.addEventListener('click', () => changeOrder(button.dataset.order)));
   video.addEventListener('loadedmetadata', applyNavigation);
   video.addEventListener('seeked', () => {
+    if (source !== 'github') return;
     if (seekLabel?.generation === generation && video.paused) {
       setStatus(seekLabel.text + tr('. Press play to continue.', '。点击播放可继续观看。'));
       seekLabel = null;
@@ -95,7 +138,7 @@
   });
   video.addEventListener('pause', () => { play.textContent = tr('Resume playback', '继续播放'); });
   video.addEventListener('ended', () => { play.textContent = tr('Replay', '重新播放'); setStatus(tr('The animation has ended. Start again from any key flux.', '演示已结束，可从任意关键磁通重新观看。')); });
-  video.addEventListener('error', () => showError(tr('The video could not be loaded. Try switching orders again or download the current MP4.', '视频未能载入，可重试切换阶数，或使用当前 MP4 下载链接。')));
+  video.addEventListener('error', () => { if (source === 'github') showError(tr('The video could not be loaded. Try Bilibili or download the current MP4.', '视频未能载入，可切换B站，或使用当前 MP4 下载链接。')); });
   rate.addEventListener('change', () => { video.playbackRate = Number(rate.value); });
   chapterButtons.forEach(button => button.addEventListener('click', () => seekTo(Number(button.dataset.time), button.dataset.label)));
   document.querySelectorAll('[data-seek]').forEach(link => link.addEventListener('click', () => {
@@ -109,7 +152,8 @@
     if (link.getAttribute('aria-current') === 'page') { event.preventDefault(); return; }
     const url = new URL(link.getAttribute('href'), location.href);
     url.searchParams.set('order', order);
-    url.searchParams.set('time', String(pending?.time ?? video.currentTime));
+    url.searchParams.set('time', String(source === 'bilibili' ? 0 : pending?.time ?? video.currentTime));
+    url.searchParams.set('source', source);
     url.searchParams.set('rate', rate.value);
     url.hash = location.hash;
     link.href = url.href;
@@ -123,6 +167,9 @@
     changeOrder(nextOrder, Number.isFinite(seconds) ? Math.max(0, seconds) : 0,
       tr('Language changed; the flux position is preserved', '已切换语言，保留当前磁通位置'));
   }
+  let preferredSource = navigation.get('source');
+  if (!preferredSource) { try { preferredSource = localStorage.getItem('butterflyVideoSource'); } catch { /* Optional preference. */ } }
+  if (preferredSource === 'bilibili') switchSource('bilibili');
 
   const root = document.documentElement;
   const settings = { font: ['small', 'standard', 'large'], width: ['standard', 'wide'], theme: ['light', 'dark', 'system'] };

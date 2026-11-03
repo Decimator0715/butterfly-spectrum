@@ -8,8 +8,8 @@
 <meta content="light dark" name="color-scheme"/>
 <title>蝴蝶谱 · 磁通扫描演示</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261102-resources" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261102-resources"></script>
+<link href="style.css?v=20261103-bilibili" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261103-bilibili"></script>
 <link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/></head>
 <body>
 <a class="skip-link" href="#content">跳到正文</a>
@@ -44,28 +44,31 @@
 <p class="subtitle">霍夫施塔特蝴蝶谱的磁通扫描、动量分支与能隙</p>
 <div class="article-tabs"><nav aria-label="内容视图"><a class="selected" href="#top">条目</a><a href="#demonstration">视频演示</a></nav><a href="#provenance">版本信息</a><nav aria-label="Language / 语言" class="language-switch"><a data-language="en" href="index.html" hreflang="en" lang="en">English</a><a aria-current="page" data-language="zh" href="zh.html" hreflang="zh-CN" lang="zh-CN">中文</a></nav></div>
 <p class="lead"><strong>霍夫施塔特蝴蝶谱</strong>展示方格晶格中电子的允许能量如何随磁通变化。本页将这一谱结构与动量分辨的能量分支并置，以三段可切换的<strong>参数扫描动画</strong>呈现 |m| = 1、2、3 的能隙。</p>
-<p class="intro-note">选择能隙阶数，或点击下方关键磁通。切换阶数会保留播放位置，便于比较同一磁通。视频中的播放时间仅用于浏览，不代表电子的真实演化时间。</p>
+<p class="intro-note">请选择能隙阶数与视频源。原始高清源支持切换阶数时保留磁通位置，以及精确跳转关键磁通。B站使用播放器自带控制，换阶数时从头播放。播放时间只是导航参数，不是电子的真实时间演化。</p>
 <section aria-labelledby="demonstration-heading" data-search="动画 演示 视频 播放 磁通 扫描" id="demonstration">
 <h2 id="demonstration-heading" tabindex="-1">动画演示</h2>
 <p class="version-note" id="video-version-note"><strong>高清版本。</strong>三个阶数均已更新为10月29日高清版。</p><div aria-label="选择能隙阶数" class="order-switcher" role="group">
 <span class="order-label">能隙阶数</span>
-<button aria-pressed="true" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-1-20261029.zip" data-order="1" data-poster="assets/butterfly-hd-order-1-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="button">|m| = 1</button>
-<button aria-pressed="false" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-2-20261029.zip" data-order="2" data-poster="assets/butterfly-hd-order-2-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4" type="button">|m| = 2</button>
-<button aria-pressed="false" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-3-20261029.zip" data-order="3" data-poster="assets/butterfly-hd-order-3-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4" type="button">|m| = 3</button>
+<button aria-pressed="true" data-bvid="BV1vL4M6EEs1" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-1-20261029.zip" data-order="1" data-poster="assets/butterfly-hd-order-1-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="button">|m| = 1</button>
+<button aria-pressed="false" data-bvid="BV12a4M6qE1A" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-2-20261029.zip" data-order="2" data-poster="assets/butterfly-hd-order-2-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4" type="button">|m| = 2</button>
+<button aria-pressed="false" data-bvid="BV14a4M6qEnJ" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-3-20261029.zip" data-order="3" data-poster="assets/butterfly-hd-order-3-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4" type="button">|m| = 3</button>
 <span id="order-description">展示 m = −1 与 +1</span>
 </div>
-<figure class="video-figure">
+<div aria-label="视频源" class="order-switcher" id="source-switcher" role="group">
+<span class="order-label">视频源</span>
+<button aria-pressed="true" data-source="github" type="button">原始高清 · GitHub</button>
+<button aria-pressed="false" data-source="bilibili" type="button">B站 · 大陆观看</button></div><figure class="video-figure">
 <video aria-describedby="video-caption" controls="" id="butterfly-video" playsinline="" poster="assets/butterfly-hd-order-1-20261029.png" preload="metadata">
 <source src="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="video/mp4"/>
             你的浏览器无法播放嵌入视频，可使用下方链接下载 MP4。
-          </video>
+          </video><iframe allow="fullscreen; picture-in-picture" allowfullscreen="" hidden="" id="bilibili-player" title="B站蝴蝶谱视频"></iframe>
 <figcaption id="video-caption"><strong>图 1　方格模型的蝴蝶谱扫描。</strong>左侧以完整蝴蝶谱为固定底图，右侧显示当前磁通下的动量分支。两幅绘图区均为正方形；黑色虚线标示当前磁通与布拉格参考位置。手机可横屏或全屏观看。 左右同色能隙段对应同一全局能量区间，不使用跨图引导线。</figcaption>
 </figure>
 <div class="player-toolbar">
 <button class="wiki-button" id="play-toggle" type="button">播放演示</button>
 <label class="rate-label">播放速度 <select aria-label="播放速度" id="playback-rate"><option value="0.5">0.5×</option><option selected="" value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
 <a class="download-link current-video-download" download="" href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">下载当前 MP4 <span id="download-order">（|m| = 1）</span></a>
-<a class="download-link" download="" href="assets/butterfly-hd-keyframes-1-20261029.zip" id="keyframe-download">下载高清关键帧（PNG ZIP）</a></div>
+<a class="download-link" download="" href="assets/butterfly-hd-keyframes-1-20261029.zip" id="keyframe-download">下载高清关键帧（PNG ZIP）</a><a class="download-link" href="https://www.bilibili.com/video/BV1vL4M6EEs1/" id="bilibili-open" rel="noopener noreferrer" target="_blank">在B站打开 ↗</a></div>
 <div aria-label="关键磁通跳转" class="chapter-navigation">
 <span class="chapter-label">关键磁通</span>
 <button data-base-time="0.15" data-label="起点：α = 1/70" data-time="0.15" type="button">起点</button>
@@ -76,7 +79,7 @@
 <button data-base-time="74.75" data-label="α = 1/2" data-time="75.75" type="button">α = 1/2 <small id="half-flux-state">闭隙</small></button>
 <button data-base-time="149.35" data-label="终点：α = 69/70" data-time="150.35" type="button">终点</button>
 </div>
-<p aria-live="polite" class="player-status" id="player-status" role="status">点击播放，或选择一个关键磁通定位画面。</p>
+<p aria-live="polite" class="player-status" id="player-status" role="status">点击播放，或选择一个关键磁通定位画面。</p><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
 <noscript><p>JavaScript 未启用。可播放默认视频，或下载 <a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">|m| = 1</a>、<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4">|m| = 2</a>、<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4">|m| = 3</a>。</p></noscript>
 </section>
 <section aria-labelledby="reading-heading" data-search="如何阅读 左图 右图 颜色 红色 图例 黑色 竖线" id="reading">
@@ -131,7 +134,7 @@
 <h2 id="references-heading" tabindex="-1">参考资料</h2>
 <ol class="references"><li><a href="https://en.wikipedia.org/wiki/Hofstadter%27s_butterfly" rel="noopener noreferrer" target="_blank">Hofstadter’s butterfly — Wikipedia</a>，主题背景与百科式页面布局参考。</li><li><a href="https://blog.csdn.net/qq_52793095/article/details/134743440" rel="noopener noreferrer" target="_blank">GitHub 从注册到上传静态网页 — CSDN</a>，用户提供的静态网页制作方案。</li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" rel="noopener noreferrer" target="_blank">Creating a GitHub Pages site — GitHub Docs</a>，静态网页发布方法。</li></ol>
 </section>
-<footer class="article-footer" id="about"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-11-02">2026年11月2日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
+<footer class="article-footer" id="about"><p>本页为独立研究演示，采用百科式排版，与维基百科及维基媒体基金会无隶属关系。</p><p>页面整理：<time datetime="2026-11-03">2026年11月3日</time>。视频与截图来自本地 MATLAB 计算结果。</p><a href="#top">返回顶部 ↑</a></footer>
 </main>
 <aside aria-label="外观设置" class="appearance" id="appearance">
 <div class="sidebar-title">外观</div>

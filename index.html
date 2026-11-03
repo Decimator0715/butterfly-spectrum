@@ -8,8 +8,8 @@
 <meta content="light dark" name="color-scheme"/>
 <title>Hofstadter Butterfly · Flux Scan</title>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="style.css?v=20261102-resources" rel="stylesheet"/>
-<script defer="" src="app.js?v=20261102-resources"></script>
+<link href="style.css?v=20261103-bilibili" rel="stylesheet"/>
+<script defer="" src="app.js?v=20261103-bilibili"></script>
 <link href="index.html" hreflang="en" rel="alternate"/><link href="zh.html" hreflang="zh-CN" rel="alternate"/></head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
@@ -44,28 +44,31 @@
 <p class="subtitle">Flux scans, momentum branches and energy gaps in the Hofstadter butterfly</p>
 <div class="article-tabs"><nav aria-label="Article views"><a class="selected" href="#top">Article</a><a href="#demonstration">Video</a></nav><a href="#provenance">Version details</a><nav aria-label="Language / 语言" class="language-switch"><a aria-current="page" data-language="en" href="index.html" hreflang="en" lang="en">English</a><a data-language="zh" href="zh.html" hreflang="zh-CN" lang="zh-CN">中文</a></nav></div>
 <p class="lead"><strong>The Hofstadter butterfly</strong> shows how the allowed energies of electrons on a square lattice vary with magnetic flux. This page places the spectrum beside its momentum-resolved branches, with three switchable <strong>parameter-scan animations</strong> for gap labels |m| = 1, 2 and 3.</p>
-<p class="intro-note">Choose a gap order or a key flux below. Switching orders preserves the playback position for comparison at the same flux. Playback time is only a navigation parameter; it is not the physical time evolution of an electron.</p>
+<p class="intro-note">Choose a gap order and video source below. The original HD source preserves the flux position when switching orders and supports precise key-flux navigation. Bilibili uses its own playback controls and starts from the beginning when switching orders. Playback time is a navigation parameter, not physical time evolution.</p>
 <section aria-labelledby="demonstration-heading" data-search="animation video playback flux scan" id="demonstration">
 <h2 id="demonstration-heading" tabindex="-1">Animation</h2>
 <p class="version-note" id="video-version-note"><strong>HD release.</strong> All three orders now use the 29 October HD videos.</p><div aria-label="Choose gap order" class="order-switcher" role="group">
 <span class="order-label">Gap order</span>
-<button aria-pressed="true" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-1-20261029.zip" data-order="1" data-poster="assets/butterfly-hd-order-1-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="button">|m| = 1</button>
-<button aria-pressed="false" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-2-20261029.zip" data-order="2" data-poster="assets/butterfly-hd-order-2-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4" type="button">|m| = 2</button>
-<button aria-pressed="false" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-3-20261029.zip" data-order="3" data-poster="assets/butterfly-hd-order-3-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4" type="button">|m| = 3</button>
+<button aria-pressed="true" data-bvid="BV1vL4M6EEs1" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-1-20261029.zip" data-order="1" data-poster="assets/butterfly-hd-order-1-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="button">|m| = 1</button>
+<button aria-pressed="false" data-bvid="BV12a4M6qE1A" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-2-20261029.zip" data-order="2" data-poster="assets/butterfly-hd-order-2-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4" type="button">|m| = 2</button>
+<button aria-pressed="false" data-bvid="BV14a4M6qEnJ" data-format="3600 × 1800 · 10 fps" data-keyframes="assets/butterfly-hd-keyframes-3-20261029.zip" data-order="3" data-poster="assets/butterfly-hd-order-3-20261029.png" data-time-offset="1" data-video="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4" type="button">|m| = 3</button>
 <span id="order-description">Showing m = −1 and +1</span>
 </div>
-<figure class="video-figure">
+<div aria-label="Video source" class="order-switcher" id="source-switcher" role="group">
+<span class="order-label">Video source</span>
+<button aria-pressed="true" data-source="github" type="button">Original HD · GitHub</button>
+<button aria-pressed="false" data-source="bilibili" type="button">Bilibili · Mainland China</button></div><figure class="video-figure">
 <video aria-describedby="video-caption" controls="" id="butterfly-video" playsinline="" poster="assets/butterfly-hd-order-1-20261029.png" preload="metadata">
 <source src="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4" type="video/mp4"/>
             Your browser cannot play the embedded video. Use the MP4 download link below.
-          </video>
+          </video><iframe allow="fullscreen; picture-in-picture" allowfullscreen="" hidden="" id="bilibili-player" title="Bilibili butterfly video"></iframe>
 <figcaption id="video-caption"><strong>Figure 1. Flux scan of the square-lattice butterfly. </strong>The left panel keeps the full butterfly visible; the right panel shows momentum branches at the current flux. Both plot boxes are square. Black dashed lines mark the current flux and Bragg reference positions. On a phone, use landscape or full-screen mode. Matching colored gap bars in the left and right panels identify the same global energy interval; no cross-panel guide lines are used.</figcaption>
 </figure>
 <div class="player-toolbar">
 <button class="wiki-button" id="play-toggle" type="button">Play animation</button>
 <label class="rate-label">Playback speed  <select aria-label="Playback speed" id="playback-rate"><option value="0.5">0.5×</option><option selected="" value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
 <a class="download-link current-video-download" download="" href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">Download current MP4  <span id="download-order">(|m| = 1)</span></a>
-<a class="download-link" download="" href="assets/butterfly-hd-keyframes-1-20261029.zip" id="keyframe-download">Download HD keyframes (PNG ZIP)</a></div>
+<a class="download-link" download="" href="assets/butterfly-hd-keyframes-1-20261029.zip" id="keyframe-download">Download HD keyframes (PNG ZIP)</a><a class="download-link" href="https://www.bilibili.com/video/BV1vL4M6EEs1/" id="bilibili-open" rel="noopener noreferrer" target="_blank">Watch on Bilibili ↗</a></div>
 <div aria-label="Jump to key flux" class="chapter-navigation">
 <span class="chapter-label">Key fluxes</span>
 <button data-base-time="0.15" data-label="Start: α = 1/70" data-time="0.15" type="button">Start</button>
@@ -76,7 +79,7 @@
 <button data-base-time="74.75" data-label="α = 1/2" data-time="75.75" type="button">α = 1/2 <small id="half-flux-state">Closed gap</small></button>
 <button data-base-time="149.35" data-label="End: α = 69/70" data-time="150.35" type="button">End</button>
 </div>
-<p aria-live="polite" class="player-status" id="player-status" role="status">Press play or choose a key flux to inspect a frame.</p>
+<p aria-live="polite" class="player-status" id="player-status" role="status">Press play or choose a key flux to inspect a frame.</p><noscript id="bilibili-noscript"><p>Bilibili: <a href="https://www.bilibili.com/video/BV1vL4M6EEs1/">|m| = 1</a> · <a href="https://www.bilibili.com/video/BV12a4M6qE1A/">|m| = 2</a> · <a href="https://www.bilibili.com/video/BV14a4M6qEnJ/">|m| = 3</a></p></noscript>
 <noscript><p>JavaScript is disabled. Play the default video or download  <a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-1-20261029.mp4">|m| = 1</a>,<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-2-20261029.mp4">|m| = 2</a>,<a href="https://github.com/Decimator0715/butterfly-spectrum/releases/download/hd-20261029/butterfly-hd-order-3-20261029.mp4">|m| = 3</a>.</p></noscript>
 </section>
 <section aria-labelledby="reading-heading" data-search="guide colors branches spectrum legend" id="reading">
@@ -131,7 +134,7 @@
 <h2 id="references-heading" tabindex="-1">References</h2>
 <ol class="references"><li><a href="https://en.wikipedia.org/wiki/Hofstadter%27s_butterfly" rel="noopener noreferrer" target="_blank">Hofstadter’s butterfly — Wikipedia</a> — topic background and inspiration for the encyclopedia-style layout.</li><li><a href="https://blog.csdn.net/qq_52793095/article/details/134743440" rel="noopener noreferrer" target="_blank">From GitHub registration to static-page upload — CSDN (Chinese)</a> — the static-page tutorial supplied by the author.</li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" rel="noopener noreferrer" target="_blank">Creating a GitHub Pages site — GitHub Docs</a> — static website publishing instructions.</li></ol>
 </section>
-<footer class="article-footer" id="about"><p>This independent research demonstration uses an encyclopedia-style layout. It is not affiliated with Wikipedia or the Wikimedia Foundation.</p><p>Page prepared: <time datetime="2026-11-02">2 November 2026</time>. Videos and images come from local MATLAB calculations.</p><a href="#top">Back to top ↑</a></footer>
+<footer class="article-footer" id="about"><p>This independent research demonstration uses an encyclopedia-style layout. It is not affiliated with Wikipedia or the Wikimedia Foundation.</p><p>Page prepared: <time datetime="2026-11-03">3 November 2026</time>. Videos and images come from local MATLAB calculations.</p><a href="#top">Back to top ↑</a></footer>
 </main>
 <aside aria-label="Appearance settings" class="appearance" id="appearance">
 <div class="sidebar-title">Appearance</div>

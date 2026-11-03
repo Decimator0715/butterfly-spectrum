@@ -24,6 +24,8 @@ main{min-width:0}.article-heading{display:flex;align-items:baseline;justify-cont
 .order-switcher{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:2px 0 14px;font-size:14px}.order-label{font-weight:600;margin-right:5px}.order-switcher button{border:1px solid var(--border);background:var(--surface);color:var(--link);border-radius:2px;padding:6px 15px;min-height:36px}.order-switcher button:hover{background:var(--subtle)}.order-switcher button[aria-pressed=true]{border-color:var(--active);color:var(--text);box-shadow:inset 0 -3px var(--active);font-weight:650}#order-description{font-size:13px;color:var(--muted);margin-left:6px}@media(max-width:500px){.order-switcher{gap:8px}.order-label{width:100%}#order-description{width:100%;margin-left:0}}
 
 /* English-default bilingual edition; retain the encyclopedia layout. */
+#bilibili-player{display:block;width:100%;aspect-ratio:2/1;border:0;background:#000}
+[hidden]{display:none!important}
 html[lang=en] .wordmark strong{font-size:23px;letter-spacing:0}
 html[lang=en] .wordmark small{letter-spacing:0;font-size:10px}
 html[lang=en] .site-header{gap:22px}
