@@ -22,3 +22,16 @@
 .image-modal-open{overflow:hidden}.zoom-controls output{min-width:42px;text-align:center}
 @media(max-width:500px){.image-controls{gap:12px}.image-mode{width:100%}.image-controls label{font-size:13px}.image-actions{gap:10px}.image-actions>span{font-size:11px}.keyframe-card figcaption{padding:10px}.comparison-note{font-size:13px}#image-dialog{padding:10px;width:98vw;max-width:98vw;height:94dvh;max-height:94dvh}.image-dialog-heading strong{font-size:12px}.zoom-controls{gap:6px;font-size:12px}.zoom-controls a{margin-left:0;width:100%}.zoom-help{font-size:11px}}
 @media print{.image-controls,.image-actions,#image-dialog{display:none!important}.keyframe-card{break-inside:avoid}}
+/* Three stacked equal viewports share image-pixel scale and pan offsets. */
+#linked-dialog{box-sizing:border-box;width:min(96vw,1500px);max-width:96vw;height:94dvh;max-height:94dvh;padding:16px;background:var(--background);color:var(--text);border:1px solid var(--border)}
+#linked-dialog[open]{display:flex;flex-direction:column;gap:8px}#linked-dialog::backdrop{background:rgb(0 0 0 / .66)}
+.linked-panes{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(3,minmax(0,1fr));gap:10px;flex:1;min-height:0;min-width:0}
+.linked-pane{display:flex;flex-direction:column;min-height:0;min-width:0;margin:0;padding:0}
+.linked-pane-heading{display:flex;align-items:center;gap:12px;font-size:13px;min-height:28px;white-space:nowrap}
+.linked-state{color:var(--muted);overflow:hidden;text-overflow:ellipsis}.linked-download{margin-left:auto;flex-shrink:0}
+.linked-viewport{flex:1;min-height:0;overflow:scroll;overscroll-behavior:contain;touch-action:pan-x pan-y;background:#fff;border:1px solid var(--border);cursor:grab;scroll-behavior:auto}
+.linked-viewport.dragging{cursor:grabbing}.linked-viewport:focus-visible{outline:2px solid var(--active);outline-offset:1px}
+.linked-canvas{margin:0 auto;flex-shrink:0}.linked-canvas img{display:block;width:100%;height:100%;max-width:none;user-select:none}
+.linked-load{height:16px;line-height:16px;font-size:11px;margin:0;color:var(--muted);overflow:hidden}
+@media(max-width:500px){#linked-dialog{padding:8px;width:98vw;max-width:98vw;height:96dvh;max-height:96dvh}.linked-pane-heading{gap:6px;font-size:11px;min-height:25px}.linked-panes{gap:6px}#linked-dialog .zoom-help{font-size:11px}}
+@media print{#linked-entry,#linked-dialog{display:none!important}}

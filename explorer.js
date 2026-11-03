@@ -19,6 +19,7 @@
   function render() {
     modes.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.imageMode === mode)));
     document.getElementById('image-order-label').hidden = mode === 'compare';
+    document.getElementById('linked-entry').hidden = mode !== 'compare';
     const descriptions = [];
     cards.forEach(card => {
       const m = card.dataset.imageOrder;
@@ -87,6 +88,7 @@
     resize(fitScale, true);
   }
   async function enlarge(m, button) {
+    if (mode === 'compare') { openLinked(button); return; }
     const item = data[`${m}:${flux.value}`];
     trigger = button; const current = ++token;
     const title = `|m| = ${m} · α = ${flux.value} · 3600 × 1800`;
@@ -127,6 +129,107 @@
   const stopDrag = () => { drag = null; viewport.classList.remove('dragging'); };
   viewport.addEventListener('pointerup', stopDrag); viewport.addEventListener('pointercancel', stopDrag);
   window.addEventListener('resize', () => { if (dialog.open) fit(); });
+
+  // All original exports share a 3600 × 1800 canvas. Use one pixel scale
+  // and equal-size viewports; sync scroll offsets, never resample spectral data.
+  const linked = document.getElementById('linked-dialog');
+  const panes = [...linked.querySelectorAll('.linked-pane')];
+  const views = panes.map(p => p.querySelector('.linked-viewport'));
+  let linkedScale = 1, linkedFit = 1, linkedTrigger = null, linkedToken = 0;
+  let linkedDrag = null, scrollFrame = 0, scrollSource = null;
+  const expectedScroll = new WeakMap();
+  function cancelScroll() {
+    cancelAnimationFrame(scrollFrame); scrollFrame = 0; scrollSource = null;
+  }
+  function alignViews(left, top) {
+    // Identical viewport dimensions and scroll extents keep all image positions equal.
+    views.forEach(v => {
+      v.scrollLeft = left; v.scrollTop = top;
+      expectedScroll.set(v, {x:v.scrollLeft,y:v.scrollTop});
+    });
+  }
+  function linkedResize(next, reset = false) {
+    cancelScroll();
+    const v = views[0], old = linkedScale;
+    const x = 3600 * old <= v.clientWidth ? 1800 : (v.scrollLeft + v.clientWidth / 2) / old;
+    const y = 1800 * old <= v.clientHeight ? 900 : (v.scrollTop + v.clientHeight / 2) / old;
+    linkedScale = Math.max(linkedFit, Math.min(2, next));
+    panes.forEach(p => {
+      const canvas = p.querySelector('.linked-canvas');
+      canvas.style.width = `${3600 * linkedScale}px`;
+      canvas.style.height = `${1800 * linkedScale}px`;
+    });
+    document.getElementById('linked-value').textContent = `${Math.round(linkedScale * 100)}%`;
+    document.getElementById('linked-out').disabled = linkedScale <= linkedFit + .0001;
+    document.getElementById('linked-in').disabled = linkedScale >= 2;
+    alignViews(reset ? 0 : x * linkedScale - v.clientWidth / 2,
+      reset ? 0 : y * linkedScale - v.clientHeight / 2);
+  }
+  function fitLinked() {
+    linkedFit = Math.min(...views.map(v => Math.min(v.clientWidth / 3600, v.clientHeight / 1800)), 1);
+    linkedResize(linkedFit, true);
+  }
+  function openLinked(button) {
+    linkedTrigger = button;
+    const current = ++linkedToken;
+    document.getElementById('linked-title').textContent = tr('Linked zoom', '三阶联动放大') + ` · α = ${flux.value}`;
+    panes.forEach(p => {
+      const m = p.dataset.linkedOrder, item = data[`${m}:${flux.value}`];
+      const img = p.querySelector('img'), status = p.querySelector('.linked-load');
+      p.querySelector('.linked-state').textContent = states[item.state];
+      p.querySelector('.linked-download').href = item.src;
+      img.style.visibility = 'hidden';
+      img.alt = `|m| = ${m} · α = ${flux.value} · ${states[item.state]}`;
+      status.textContent = tr('Loading original PNG…', '正在载入原始 PNG…');
+      img.src = item.src;
+      img.decode().then(() => {
+        if (current !== linkedToken || !linked.open) return;
+        img.style.visibility = '';
+        status.textContent = '';
+      }).catch(() => {
+        if (current === linkedToken && linked.open) status.textContent = tr('Could not load. Close and retry, or open Original PNG.', '载入失败，可关闭后重试，或打开原始 PNG。');
+      });
+    });
+    linked.showModal(); document.body.classList.add('image-modal-open'); fitLinked();
+  }
+  document.getElementById('linked-enlarge').addEventListener('click', event => openLinked(event.currentTarget));
+  document.getElementById('linked-in').addEventListener('click', () => linkedResize(linkedScale * 1.5));
+  document.getElementById('linked-out').addEventListener('click', () => linkedResize(linkedScale / 1.5));
+  document.getElementById('linked-fit').addEventListener('click', fitLinked);
+  document.getElementById('linked-native').addEventListener('click', () => linkedResize(1));
+  document.getElementById('linked-close').addEventListener('click', () => linked.close());
+  linked.addEventListener('close', () => {
+    linkedToken += 1; linkedDrag = null; cancelScroll();
+    views.forEach(v => v.classList.remove('dragging'));
+    document.body.classList.remove('image-modal-open'); linkedTrigger?.focus({preventScroll:true});
+  });
+  views.forEach(v => {
+    v.addEventListener('scroll', () => {
+      // Ignore scroll events queued by our own updates; an older event from
+      // another pane must not undo the user's newest scroll gesture.
+      const expected = expectedScroll.get(v);
+      if (expected && Math.abs(v.scrollLeft-expected.x)<1 && Math.abs(v.scrollTop-expected.y)<1) return;
+      if (!linked.open || views.every(other => Math.abs(other.scrollLeft-v.scrollLeft) < 1 && Math.abs(other.scrollTop-v.scrollTop) < 1)) return;
+      scrollSource = v;
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(() => {
+        const source = scrollSource; cancelScroll();
+        if (source && linked.open) alignViews(source.scrollLeft, source.scrollTop);
+      });
+    });
+    v.addEventListener('pointerdown', event => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      cancelScroll();
+      linkedDrag = {view:v,x:event.clientX,y:event.clientY,left:v.scrollLeft,top:v.scrollTop};
+      v.setPointerCapture(event.pointerId); v.classList.add('dragging'); v.focus({preventScroll:true}); event.preventDefault();
+    });
+    v.addEventListener('pointermove', event => {
+      if (linkedDrag?.view !== v) return;
+      alignViews(linkedDrag.left+linkedDrag.x-event.clientX, linkedDrag.top+linkedDrag.y-event.clientY);
+    });
+    const stop = () => { linkedDrag = null; v.classList.remove('dragging'); };
+    v.addEventListener('pointerup', stop); v.addEventListener('pointercancel', stop);
+  });
+  window.addEventListener('resize', () => { if (linked.open) fitLinked(); });
   // Version links and search results reveal collapsed material before scrolling.
   function reveal(hash) {
     if (hash !== '#provenance') return;
